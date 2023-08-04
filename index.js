@@ -1,10 +1,13 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const dotenv = require('dotenv');
 const User = require('./models/User');
 const Post = require('./models/Post');
 
+dotenv.config();
+
 mongoose
-  .connect('CONNECTION STRING')
+  .connect(process.env.MONGODB_URI)
   .then(() => {
     console.log('Connected to DB');
   })
